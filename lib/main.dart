@@ -33,14 +33,14 @@ class MyApp extends StatelessWidget {
         supportedLocales: localizationDelegate.supportedLocales,
         locale: localizationDelegate.currentLocale,
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: MyHomePage(),
+        home: const MyHomePage(),
       ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({super.key, this.title});
   final String? title;
 
   @override
@@ -71,12 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   'language.name.${localizationDelegate.currentLocale.languageCode}')
             })),
             Padding(
-                padding: EdgeInsets.only(top: 25, bottom: 160),
+                padding: const EdgeInsets.only(top: 25, bottom: 160),
                 child: CupertinoButton.filled(
-                  child: Text(translate('button.change_language')),
                   padding: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 36.0),
                   onPressed: () => _onActionSheetPress(context),
+                  child: Text(translate('button.change_language')),
                 )),
             Padding(
                 padding: const EdgeInsets.only(bottom: 10),
@@ -85,14 +85,14 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.remove_circle),
+                  icon: const Icon(Icons.remove_circle),
                   iconSize: 48,
                   onPressed: _counter > 0
                       ? () => setState(() => _decrementCounter())
                       : null,
                 ),
                 IconButton(
-                  icon: Icon(Icons.add_circle),
+                  icon: const Icon(Icons.add_circle),
                   color: Colors.blue,
                   iconSize: 48,
                   onPressed: () => setState(() => _incrementCounter()),
@@ -139,9 +139,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         cancelButton: CupertinoActionSheetAction(
-          child: Text(translate('button.cancel')),
           isDefaultAction: true,
           onPressed: () => Navigator.pop(context, null),
+          child: Text(translate('button.cancel')),
         ),
       ),
     );
